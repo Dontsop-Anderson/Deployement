@@ -1,0 +1,18 @@
+*{
+    box-sizing: border-box;
+}
+.dog{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px 0;
+}
+.dojo:hover{
+    color: yellow;
+}
+
+.ninja{
+    position: relative;
+    left: 58%;
+}
