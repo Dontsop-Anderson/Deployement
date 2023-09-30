@@ -29,14 +29,14 @@ class Dojo:
     
     @classmethod
     def get_dojo_with_ninjas(cls, db_data):
-        query = "SELECT * FROM dojos LEFT JOIN ninjas ON ninjas.dojos_id = dojos.id WHERE dojos.id = %(id)s;"
+        query = "SELECT * FROM dojos LEFT JOIN ninjas ON ninjas.dojo_id = dojos.id WHERE dojos.id = %(id)s;"
         results = connectToMySQL('dojo_users').query_db(query, db_data)
         dojo = cls(results[0])
         for row_from_db in results:
             ninja_data = {
                 "id": row_from_db["ninjas.id"],
-                "first_name": row_from_db["ninjas.first_name"],
-                "last_name": row_from_db["ninjas.last_name"],
+                "first_name": row_from_db["first_name"],
+                "last_name": row_from_db["last_name"],
                 "age": row_from_db["age"],
                 "created_at": row_from_db["ninjas.created_at"],
                 "updated_at": row_from_db["ninjas.updated_at"]

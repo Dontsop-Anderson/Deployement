@@ -25,3 +25,21 @@ class Ninja:
             ninjas.append(cls(b))
         return ninjas
     
+    @classmethod
+    def update(cls, data):
+        query = """UPDATE ninjas
+            SET first_name=%(first_name)s, last_name=%(last_name)s,  age=%(age)s, updated_at = NOW()
+            WHERE id = %(id)s;"""
+        return connectToMySQL('dojo_users').query_db(query, data)
+    
+    @classmethod
+    def remove(cls, data):
+        query = "DELETE FROM ninjas WHERE id = %(id)s;"
+        return connectToMySQL('dojo_users').query_db(query, data)
+    
+    @classmethod
+    def get_one(cls, data):
+        query = "SELECT * FROM ninjas WHERE id=%(id)s;"
+        result = connectToMySQL('dojo_users').query_db(query, data)
+        return cls(result[0])
+    
